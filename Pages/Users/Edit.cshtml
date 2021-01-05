@@ -1,0 +1,89 @@
+﻿@page
+@model SparkAuto.Pages.Users.EditModel
+@{
+}
+
+<h3 class="text-info text-center pt-2 pb-3">Modifier les données utilisateur</h3>
+<div class="white-background row border">
+    <div class="col-12">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            @Html.HiddenFor(m => m.ApplicationUser.Id)
+            <div class="row form-group">
+                <div class="col-4">
+                    <label asp-for="ApplicationUser.Name"></label>
+                </div>
+
+                <div class="col-8">
+                    <input asp-for="ApplicationUser.Name" class="form-control" />
+                    <span asp-validation-for="ApplicationUser.Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4">
+                    <label asp-for="ApplicationUser.Email"></label>
+                </div>
+
+                <div class="col-8">
+                    <input asp-for="ApplicationUser.Email" class="form-control" readonly />
+                    <span asp-validation-for="ApplicationUser.Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4">
+                    <label asp-for="ApplicationUser.City"></label>
+                </div>
+
+                <div class="col-8">
+                    <input asp-for="ApplicationUser.City" class="form-control" />
+                    <span asp-validation-for="ApplicationUser.City" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-4">
+                    <label asp-for="ApplicationUser.Adresse"></label>
+                </div>
+
+                <div class="col-8">
+                    <input asp-for="ApplicationUser.Adresse" class="form-control" />
+                    <span asp-validation-for="ApplicationUser.Adresse" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4">
+                    <label asp-for="ApplicationUser.PostalCode"></label>
+                </div>
+
+                <div class="col-8">
+                    <input asp-for="ApplicationUser.PostalCode" class="form-control" />
+                    <span asp-validation-for="ApplicationUser.PostalCode" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col-4">
+                    <label asp-for="ApplicationUser.PhoneNumber"></label>
+                </div>
+
+                <div class="col-8">
+                    <input asp-for="ApplicationUser.PhoneNumber" class="form-control" />
+                    <span asp-validation-for="ApplicationUser.PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-6">
+                        <input type="submit" class="btn btn-primary form-control" value="Modifier" />
+                    </div>
+                    <div class="col-6">
+                        <a class="btn btn-success form-control" asp-page="Index"> retour à la liste</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

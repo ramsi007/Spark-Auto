@@ -1,0 +1,98 @@
+﻿@page
+@model SparkAuto.Pages.Services.HistoryModel
+@{
+}
+
+<div class="container pt-4 pd-2 row">
+    <div class="col-6">
+        <h2 class="text-info">Historique du Service</h2>
+    </div>
+
+    <div class="col-6 text-right">
+        <a asp-page="../Cars/Index" class="btn btn-outline-success" asp-route-userId="@Model.Car.ApplicationUser.Id">
+            retour à la liste
+        </a>
+    </div>
+</div>
+
+<div class="container white-background">
+    <div class="card">
+        <div class="card-header bg-dark text-light container row">
+            <div class="col-1 text-center text-white-50 pt-3">
+                <i class="fas fa-user fa-2x"></i>
+            </div>
+            <div class="col-5">
+
+                <label class="text-info">
+                    @Html.DisplayFor(m => m.Car.ApplicationUser.Name)
+                </label>
+                <br />
+
+                <label class="text-info">
+                    @Model.Car.ApplicationUser.Email / @Model.Car.ApplicationUser.PhoneNumber
+                </label>
+            </div>
+
+            <div class="col-5 text-right">
+                <label class="text-info">
+                    @Html.DisplayFor(m => m.Car.Make)   @Html.DisplayFor(m => m.Car.Model)   @Html.DisplayFor(m => m.Car.Style)
+                </label>
+                <br />
+
+                <label class="text-info">
+                    @Model.Car.Year
+                </label>
+
+            </div>
+
+            <div class="col-1 text-center text-white-50 pt-3">
+                <i class="fas fa-car fa-2x"></i>
+            </div>
+        </div>
+
+        <div class="card-body">
+            @if (Model.Services.Count == 0)
+            {
+                <p class="text-danger text-center" style="font-size: 18px"> Pas de services pour cette voiture</p>
+            }
+            else
+            {
+                <table class="table table-striped border">
+                    <tr class="table-secondary">
+                        <th>
+                            @Html.DisplayNameFor(m => m.Services[0].Miles)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.Services[0].TotalPrice)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.Services[0].Comments)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.Services[0].DateAdded)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model.Services)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.Miles)</td>
+                            <td>@Html.DisplayFor(m => item.TotalPrice)</td>
+                            <td>@Html.DisplayFor(m => item.Comments)</td>
+                            <td>@Html.DisplayFor(m => item.DateAdded)</td>
+                            <td>
+                                <a class="btn btn-secondary form-control"
+                                        asp-page="Details" asp-route-serviceId="@item.Id">
+                                    <i class="fas fa-list-alt"></i> &nbsp;Details
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+
+        </div>
+    </div>
+
+</div>
