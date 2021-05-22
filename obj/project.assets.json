@@ -9193,11 +9193,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Oujdi\\Desktop\\Projet C#\\ASP.NET Core\\Asp.net-core with Ahmed Saleh\\8-Cars-App\\SparkAuto\\SparkAuto.csproj",
+      "projectUniqueName": "C:\\Users\\Oujdi\\Desktop\\Projet C#\\Projet C#\\ASP.NET Core\\Asp.net-core with Ahmed Saleh\\8-Cars-App\\SparkAuto\\SparkAuto.csproj",
       "projectName": "SparkAuto",
-      "projectPath": "C:\\Users\\Oujdi\\Desktop\\Projet C#\\ASP.NET Core\\Asp.net-core with Ahmed Saleh\\8-Cars-App\\SparkAuto\\SparkAuto.csproj",
+      "projectPath": "C:\\Users\\Oujdi\\Desktop\\Projet C#\\Projet C#\\ASP.NET Core\\Asp.net-core with Ahmed Saleh\\8-Cars-App\\SparkAuto\\SparkAuto.csproj",
       "packagesPath": "C:\\Users\\Oujdi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Oujdi\\Desktop\\Projet C#\\ASP.NET Core\\Asp.net-core with Ahmed Saleh\\8-Cars-App\\SparkAuto\\obj\\",
+      "outputPath": "C:\\Users\\Oujdi\\Desktop\\Projet C#\\Projet C#\\ASP.NET Core\\Asp.net-core with Ahmed Saleh\\8-Cars-App\\SparkAuto\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Oujdi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9212,6 +9212,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -9223,6 +9224,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
@@ -9273,7 +9275,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

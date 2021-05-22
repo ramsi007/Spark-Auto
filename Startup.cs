@@ -32,7 +32,17 @@ namespace SparkAuto
                     Configuration.GetConnectionString("DefaultConnection")));
 
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+            // User && Role
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.SignIn.RequireConfirmedAccount = false;
+            })
+
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI();
             services.AddRazorPages();

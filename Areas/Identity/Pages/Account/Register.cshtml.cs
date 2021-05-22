@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using SparkAuto.Data;
 using SparkAuto.Models;
 using SparkAuto.Utility;
 
@@ -26,19 +27,21 @@ namespace SparkAuto.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly ApplicationDbContext _db;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager, ApplicationDbContext db)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
             _roleManager = roleManager;
+            _db = db;
         }
 
         [BindProperty]
@@ -111,10 +114,18 @@ namespace SparkAuto.Areas.Identity.Pages.Account
                         await _roleManager.CreateAsync(new IdentityRole(SD.CustomerEndUser));
                     }
 
-                     await _userManager.AddToRoleAsync(user, SD.CustomerEndUser);
-
-
-
+                    var userInDb = _db.ApplicationUsers.ToList();
+                    if (userInDb.Count <= 1)
+                    {
+                        await _userManager.AddToRoleAsync(user, SD.AdminEndUser);
+                        await _db.SaveChangesAsync();
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        return LocalRedirect(returnUrl);
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, SD.CustomerEndUser);
+                    }
 
                     _logger.LogInformation("User created a new account with password.");
 
